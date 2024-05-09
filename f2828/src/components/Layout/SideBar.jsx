@@ -62,8 +62,11 @@ function SideBar({ isOpen, setIsOpen }) {
               </Link>
             </li>
             <li>
-              <Link to="/agentes/ver-agentes" onClick={() => setIsOpen(false)}>
-                Ver Agentes
+              <Link
+                to="/agentes/ver-TramitesPendientes"
+                onClick={() => setIsOpen(false)}
+              >
+                Trámites Pendientes
               </Link>
             </li>
           </ul>

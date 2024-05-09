@@ -11,7 +11,7 @@ import { useAgentes } from "../hooks/useAgentes";
 
 //Componente que muestra los AGENTES
 
-const GetAgentes = ({ ...props }) => {
+const TramitesPendientes = ({ ...props }) => {
   const { data, isLoading } = useAgentes().agentesQuery;
   const [search, setSearch] = useState("");
   const [agente, setAgente] = useState([]);
@@ -116,4 +116,4 @@ const GetAgentes = ({ ...props }) => {
   );
 };
 
-export default GetAgentes;
+export default TramitesPendientes;

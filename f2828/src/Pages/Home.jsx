@@ -27,20 +27,18 @@ export const Home = () => {
           </span>
         </div>
         <div>
-          <h4 className="font-weight-bold text-muted mb-0">
-            VARIABLES DE PROCURACIÓN
-          </h4>
-          <h6 className="text-info mb-0"> CUCAIBA</h6>
+          <h4 className="font-weight-bold text-muted mb-0">Formulario 2828</h4>
+          <h6 className="text-info mb-0"> Sueldos</h6>
         </div>
       </div>
 
       <div className="card shadow-sm">
         <div className="card-body">
           <div className="card-text">
-            <p>Bienvenida/o, Usuario del Cucaiba </p>
+            <p>Bienvenida/o, Usuario del Formulario 2828 </p>
             <p>
-              Tu usuario está asociado al <strong> C.U.C.A.I.B.A</strong>. Ante
-              cualquier problema, por favor comunicate a la brevedad con el
+              Tu usuario está asociado al <strong> Formulario 2828</strong>.
+              Ante cualquier problema, por favor comunicate a la brevedad con el
               <a href="mailto:usuarios@ms.gba.gov.ar">
                 {" "}
                 Departamento de Atención de Usuarios

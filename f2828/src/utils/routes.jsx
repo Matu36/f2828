@@ -57,7 +57,7 @@ const router = createBrowserRouter(
           element: <RedirectComponent />,
           children: [
             {
-              path: "/agentes/ver-agentes",
+              path: "/agentes/ver-TramitesPendientes",
               element: <Agentes />,
             },
             {

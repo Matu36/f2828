@@ -1,11 +1,14 @@
 import React from "react";
-import GetAgentes from "../components/GetAgentes";
+import TramitesPendientes from "../components/TramitesPendientes";
 import Layout from "../components/Layout/LayoutContainer";
 
 const Agentes = () => {
   return (
-    <Layout Titulo="Agentes" Subtitulo="Listado de todos los Agentes cargados">
-      <GetAgentes />
+    <Layout
+      Titulo="Trámites Pendientes"
+      Subtitulo="Listado de todos los Trámites Pendientes"
+    >
+      <TramitesPendientes />
       <br />
     </Layout>
   );
