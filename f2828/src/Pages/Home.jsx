@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import "../assets/styles/style.css";
+import Notificacion from "../components/UI/LandingNotificacion.jsx";
+import { FaCloudDownloadAlt } from "react-icons/fa";
 
 export const Home = () => {
   const [fechaActual, setFechaActual] = useState("");
@@ -67,9 +70,9 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      {/* <div className="notificacion" style={{ marginBlockEnd: "0px" }}>
+      <div className="notificacion" style={{ marginBlockEnd: "0px" }}>
         <Notificacion />
-      </div> */}
+      </div>
       {/* <div className="row mb-1">
         <div className="col">
           <h2 className="text-muted text-left mb-0">

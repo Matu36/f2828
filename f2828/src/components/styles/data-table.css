@@ -1,0 +1,8 @@
+.rdt_TableCol_Sortable {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.rdt_TableRow:hover {
+  background-color: #e3e3e3;
+}

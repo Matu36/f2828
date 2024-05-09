@@ -1,0 +1,82 @@
+.card {
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
+}
+
+.card-header {
+  margin-bottom: 20px;
+}
+
+.card-header h2 {
+  font-size: 24px;
+}
+
+.data-row {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: start;
+  flex-direction: column;
+  flex-basis: 45%;
+  box-sizing: border-box;
+}
+
+.label {
+  color: #aaaaaa;
+  border-top: 0.004rem solid #969a9e;
+  width: 100%;
+}
+
+.value {
+  font-weight: 600;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  overflow-x: scroll;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #e0e0e0;
+}
+
+#triangleIcon {
+  transition: all 250ms ease-in;
+}
+
+.showDesplegable {
+  transform: rotate(180deg);
+  transition: all 250ms ease-in;
+}
+
+@media (max-width: 768px) {
+  .inputSearch {
+    max-width: 80% !important;
+  }
+  .btnSearch {
+    font-size: 0.75rem;
+    max-height: 80% !important;
+  }
+  .detalleAgente {
+    flex-direction: column;
+  }
+  .formAgente {
+    flex-direction: column;
+  }
+
+}

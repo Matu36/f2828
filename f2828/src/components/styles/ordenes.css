@@ -1,0 +1,21 @@
+.dropdown-item-custom {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.pdf-download-link a {
+  text-decoration: none;
+  margin-right: 25px;
+  color: #646464;
+}
+
+.pdf-download-link:hover a {
+  color: #fff;
+}
+
+.del-overflow {
+  overflow: unset !important;
+}
+
+

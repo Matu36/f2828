@@ -1,0 +1,10 @@
+.layout-container {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.children-container {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: #f7f7f7;
+}

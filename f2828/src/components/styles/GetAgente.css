@@ -1,0 +1,17 @@
+.custom-link button.detalle{
+    text-decoration: none;
+    color: #26B1E8;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .detalle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+
+  .custom-link button.detalle:hover {
+    text-decoration: underline;
+  }

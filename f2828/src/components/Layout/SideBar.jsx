@@ -1,3 +1,4 @@
+import "../../assets/styles/style.css";
 import { Link } from "react-router-dom";
 import {
   FaAmbulance,
@@ -8,7 +9,8 @@ import {
 import { SiWebmoney } from "react-icons/si";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { HiOutlineDocumentText } from "react-icons/hi";
-import "../../styles/sidebar.css";
+
+import "../styles/sidebar.css";
 
 function SideBar({ isOpen, setIsOpen }) {
   return (

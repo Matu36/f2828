@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
-import "../../styles/header.css";
+import "../styles/header.css";
 import SideBar from "./SideBar";
 
 function Header({ data, isFetched }) {
@@ -67,7 +67,7 @@ function Header({ data, isFetched }) {
                 aria-expanded="false"
               >
                 <div className="position-relative ml-3 user-circle-component"></div>
-                <span className="username"> Matías Pineda </span>
+                <span className="username"> Alejandro Oslovski </span>
                 <span
                   className="d-inline-block text-center position-relative"
                   data-bs-toggle="tooltip"

@@ -1,0 +1,140 @@
+/* -- Inicio Header -- */
+
+.shadow-ms {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-toggler {
+  color: #fafafa;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+}
+
+.intranet-logo .fst-line {
+  color: #acacac;
+}
+
+.intranet-logo .snd-line {
+  color: var(--ms-main-color);
+}
+
+.btn-user {
+  color: #fff;
+  font-weight: 600;
+  background: none;
+  border: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 2rem;
+}
+
+.username {
+  color: #f2f2f2;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.dropdown-user.dropdown-menu {
+  right: 0;
+  left: auto;
+  border-radius: 0.5rem;
+}
+
+.dropdown-user .dropdown-item {
+  white-space: normal;
+}
+
+.text-no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: #fff;
+}
+
+.svg {
+  width: 5rem;
+  height: 5rem;
+  color: #ccc;
+}
+
+.intranet-logo {
+  padding-left: 0.5rem !important;
+}
+
+.intranet-logo > span {
+  display: block;
+  font-family: var(--ms-font), Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* -- Inicio Navbar --*/
+
+.navbar {
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* -- Fin Navbar --*/
+
+/**
+ * Media Querys,
+ * Control pantallas desktop
+ */
+@media only screen and (min-width: 1715px) {
+  .btn-user2,
+  .dropdown-user.dropdown-menu {
+    width: 20rem;
+  }
+  .username {
+    display: inline;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .btn-user2,
+  .dropdown-user.dropdown-menu {
+    width: 20rem;
+  }
+  .username {
+    display: inline;
+  }
+}
+
+@media (max-width: 769px) {
+  .notification-component {
+    display: none;
+  }
+}
+
+@media (min-width: 770px) {
+  .user-circle-component {
+    display: none;
+  }
+}
+
+/* -- Fin Header -- */

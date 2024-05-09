@@ -1,4 +1,5 @@
 import React from "react";
+import "../../assets/styles/style.css";
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
       className="footer mt-auto py-3 position-fixed bottom-0"
       style={{ width: "100%" }}
     >
-      <span> Formulario 2828 - Jubilaciones </span>
+      <span> Variables de Procuración - CUCAIBA </span>
       <span className="copy"> SIGLA SISTEMA - versión 2.0 </span>
     </footer>
   );
