@@ -2,7 +2,7 @@ import React from "react";
 import TramitesPendientes from "../components/TramitesPendientes";
 import Layout from "../components/Layout/LayoutContainer";
 
-const Agentes = () => {
+const Pendientes = () => {
   return (
     <Layout
       Titulo="Trámites Pendientes"
@@ -14,4 +14,4 @@ const Agentes = () => {
   );
 };
 
-export default Agentes;
+export default Pendientes;

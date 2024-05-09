@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import "../assets/styles/detalle.css";
 import { usePersona } from "../hooks/usePersona";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -145,8 +144,6 @@ const postAgente = () => {
         legajo: agente.legajo,
       };
 
-      dispatch(postAgentes(newAgente));
-
       await Swal.fire({
         position: "center",
         icon: "success",
@@ -204,6 +201,150 @@ const postAgente = () => {
                 disabled={isFetching}
                 autoComplete="off"
                 placeholder="DNI"
+                onInput={(e) => {
+                  const newValue = e.target.value;
+                  if (newValue >= 0 && newValue.length <= 9) {
+                    setAgente({ ...agente, nroDocumento: newValue });
+                    setShowError({ empty: false, length: false });
+                  }
+
+                  if (!newValue) {
+                    setShowError({ ...showError, empty: true });
+                  }
+                  if (newValue.length <= 7)
+                    setShowError({ ...showError, length: true });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleFindPersona();
+                  }
+                }}
+              />
+              <button
+                className="btn btn-buscar btn btn-md"
+                type="button"
+                onClick={handleFindPersona}
+                style={{ display: "inline-flex", alignItems: "center" }}
+                disabled={
+                  isFetching ||
+                  showError.empty ||
+                  showError.length ||
+                  !agente.nroDocumento
+                }
+              >
+                <FaSearch style={{ marginRight: "5px" }} /> Buscar
+              </button>
+            </div>
+
+            {showError.length && (
+              <div id="dniErrorMessage" className="spanObligatorio">
+                * El DNI debe tener más de 7 caracteres
+              </div>
+            )}
+
+            {showError.empty && (
+              <div className="spanObligatorio">
+                * El campo DNI no puede estar vacío
+              </div>
+            )}
+          </div>
+          <div className="mb-3">
+            <div className="d-flex gap-3 mb-2">
+              <label htmlFor="inputFechadePago" className="form-label">
+                LEGAJO:
+              </label>
+              {isFetching && (
+                <div
+                  className="spinner-border text-primary"
+                  role="status"
+                ></div>
+              )}
+            </div>
+
+            <div className="mb-3 d-flex flex-md-row formAgente gap-2 align-items-center">
+              <input
+                maxLength="9"
+                min="0"
+                type="number"
+                className="form-control"
+                id="inputLEGAJO"
+                aria-describedby="LEGAJOHelp"
+                name="LEGAJO"
+                value={agente.nroDocumento}
+                disabled={isFetching}
+                autoComplete="off"
+                placeholder="LEGAJO"
+                onInput={(e) => {
+                  const newValue = e.target.value;
+                  if (newValue >= 0 && newValue.length <= 9) {
+                    setAgente({ ...agente, nroDocumento: newValue });
+                    setShowError({ empty: false, length: false });
+                  }
+
+                  if (!newValue) {
+                    setShowError({ ...showError, empty: true });
+                  }
+                  if (newValue.length <= 7)
+                    setShowError({ ...showError, length: true });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleFindPersona();
+                  }
+                }}
+              />
+              <button
+                className="btn btn-buscar btn btn-md"
+                type="button"
+                onClick={handleFindPersona}
+                style={{ display: "inline-flex", alignItems: "center" }}
+                disabled={
+                  isFetching ||
+                  showError.empty ||
+                  showError.length ||
+                  !agente.nroDocumento
+                }
+              >
+                <FaSearch style={{ marginRight: "5px" }} /> Buscar
+              </button>
+            </div>
+
+            {showError.length && (
+              <div id="dniErrorMessage" className="spanObligatorio">
+                * El DNI debe tener más de 7 caracteres
+              </div>
+            )}
+
+            {showError.empty && (
+              <div className="spanObligatorio">
+                * El campo DNI no puede estar vacío
+              </div>
+            )}
+          </div>
+          <div className="mb-3">
+            <div className="d-flex gap-3 mb-2">
+              <label htmlFor="inputFechadePago" className="form-label">
+                APELLIDO Y NOMBRE:
+              </label>
+              {isFetching && (
+                <div
+                  className="spinner-border text-primary"
+                  role="status"
+                ></div>
+              )}
+            </div>
+
+            <div className="mb-3 d-flex flex-md-row formAgente gap-2 align-items-center">
+              <input
+                type="text"
+                className="form-control"
+                id="inputAPELLIDO"
+                aria-describedby="APELLIDOHelp"
+                name="APELLIDO"
+                value={agente.nroDocumento}
+                disabled={isFetching}
+                autoComplete="off"
+                placeholder="Buscar por APELLIDO"
                 onInput={(e) => {
                   const newValue = e.target.value;
                   if (newValue >= 0 && newValue.length <= 9) {

@@ -1,14 +1,13 @@
-import "../../assets/styles/style.css";
 import { Link } from "react-router-dom";
 import {
-  FaAmbulance,
   FaHospitalSymbol,
   FaUsers,
-  FaBraille,
+  FaCity,
+  FaGift,
+  FaExchangeAlt,
 } from "react-icons/fa";
-import { SiWebmoney } from "react-icons/si";
-import { BiMoneyWithdraw } from "react-icons/bi";
-import { HiOutlineDocumentText } from "react-icons/hi";
+import { TbLicense } from "react-icons/tb";
+import { GrUserWorker } from "react-icons/gr";
 
 import "../styles/sidebar.css";
 
@@ -52,18 +51,18 @@ function SideBar({ isOpen, setIsOpen }) {
             href="#collapseAgentes"
             role="button"
           >
-            <FaUsers className="sidebarIcons text-muted" size="1.50em" />{" "}
-            Agentes
+            <FaUsers className="sidebarIcons text-muted" size="1.50em" /> Datos
+            Personales
           </a>
           <ul className="collapse sub-menu" id="collapseAgentes">
             <li>
-              <Link to="/agentes/crear-agente" onClick={() => setIsOpen(false)}>
-                Cargar Agente
+              <Link to="/personas/carga-datos" onClick={() => setIsOpen(false)}>
+                Cargar Datos
               </Link>
             </li>
             <li>
               <Link
-                to="/agentes/ver-TramitesPendientes"
+                to="/personas/ver-TramitesPendientes"
                 onClick={() => setIsOpen(false)}
               >
                 Trámites Pendientes
@@ -80,24 +79,16 @@ function SideBar({ isOpen, setIsOpen }) {
             href="#collapseOperativos"
             role="button"
           >
-            <FaAmbulance className="sidebarIcons text-muted" size="1.50em" />{" "}
-            Operativos
+            <FaCity className="sidebarIcons text-muted" size="1.50em" />{" "}
+            Servicios Jurisdicción
           </a>
           <ul className="collapse sub-menu" id="collapseOperativos">
             <li>
               <Link
-                to="/operativos/nuevo-operativo"
+                to="/servicios/jurisdicción"
                 onClick={() => setIsOpen(false)}
               >
-                Cargar operativos
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/operativos/ver-operativos"
-                onClick={() => setIsOpen(false)}
-              >
-                Ver operativos
+                Cargar Servicios
               </Link>
             </li>
           </ul>
@@ -111,22 +102,17 @@ function SideBar({ isOpen, setIsOpen }) {
             href="#collapseHonorarios"
             role="button"
           >
-            <SiWebmoney className="sidebarIcons text-muted" size="1.50em" />{" "}
-            Honorarios
+            <GrUserWorker className="sidebarIcons text-muted" size="1.50em" />{" "}
+            Cargos
           </a>
 
           <ul className="collapse sub-menu" id="collapseHonorarios">
             <li>
-              <Link to="/honorarios/variables" onClick={() => setIsOpen(false)}>
-                Variables por Operativos
-              </Link>
-            </li>
-            <li>
               <Link
-                to="/honorarios/variables/agentes"
+                to="/cargos/agregar-cargos"
                 onClick={() => setIsOpen(false)}
               >
-                Variables por Agentes
+                Agregar Cargos
               </Link>
             </li>
           </ul>
@@ -141,18 +127,13 @@ function SideBar({ isOpen, setIsOpen }) {
               href="#collapseModulos"
               role="button"
             >
-              <FaBraille className="sidebarIcons text-muted" size="1.50em" />{" "}
-              Módulos
+              <TbLicense className="sidebarIcons text-muted" size="1.50em" />{" "}
+              Licencias
             </a>
             <ul className="collapse sub-menu" id="collapseModulos">
               <li>
-                <Link to="/modulos" onClick={() => setIsOpen(false)}>
-                  Administrar Módulos
-                </Link>
-              </li>
-              <li>
-                <Link to="/modulos/valores" onClick={() => setIsOpen(false)}>
-                  Administrar Valores
+                <Link to="/licencias" onClick={() => setIsOpen(false)}>
+                  Agregar Licencias
                 </Link>
               </li>
             </ul>
@@ -167,33 +148,22 @@ function SideBar({ isOpen, setIsOpen }) {
             href="#collapseOrdenes"
             role="button"
           >
-            <BiMoneyWithdraw
-              className="sidebarIcons text-muted"
-              size="1.50em"
-            />{" "}
-            Órdenes de Pago
+            <FaGift className="sidebarIcons text-muted" size="1.50em" />{" "}
+            Servicios Ad-Honórem
           </a>
 
           <ul className="collapse sub-menu" id="collapseOrdenes">
             <li>
-              <Link to="/ordenes/pendientes" onClick={() => setIsOpen(false)}>
-                Generar Órdenes de Pago
-              </Link>
-            </li>
-            <li>
-              <Link to="/ordenes/ver-ordenes" onClick={() => setIsOpen(false)}>
-                Ver Órdenes de Pago
+              <Link to="/ad-honorem/cargar" onClick={() => setIsOpen(false)}>
+                Cargar Servicios
               </Link>
             </li>
           </ul>
         </li>
         <li>
-          <Link to="/archivos" onClick={() => setIsOpen(false)}>
-            <HiOutlineDocumentText
-              className="sidebarIcons text-muted"
-              size="1.50em"
-            />{" "}
-            Archivos de Transferencia
+          <Link to="/suplentes" onClick={() => setIsOpen(false)}>
+            <FaExchangeAlt className="sidebarIcons text-muted" size="1.50em" />{" "}
+            Servicios Suplentes
           </Link>
         </li>
       </ul>

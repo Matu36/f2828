@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-import "../assets/styles/detalle.css";
 import { useOperativo } from "../hooks/useOperativo";
 import { validateFecha } from "../utils/Validaciones";
 import InputField from "./UI/InputField";
 
 //Componente para crear el OPERATIVO
 
-const PostOperativos = () => {
+const PostCargo = () => {
   const { mutate } = useOperativo().operativoMutation;
 
   const [showError, setShowError] = useState({
@@ -154,4 +153,4 @@ const PostOperativos = () => {
   );
 };
 
-export default PostOperativos;
+export default PostCargo;

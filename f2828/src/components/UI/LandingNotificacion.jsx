@@ -1,5 +1,4 @@
 import React from "react";
-import "../../assets/styles/style.css";
 import { useOutletContext } from "react-router-dom";
 
 // Componente que muestra las notificaciones de las liquidaciones pendientes de los agentes
@@ -30,7 +29,8 @@ const LandingNotificacion = () => {
             }}
           >
             <span style={{ fontWeight: "bold" }}>
-              {/* Ud. tiene {c.data} Órdenes de pago Pendientes */}
+              Ud. tiene "Aca van los tramites pendientes"
+              {/* {c.data}  */}
             </span>
           </div>
         </div>

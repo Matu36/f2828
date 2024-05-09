@@ -67,7 +67,7 @@ function Header({ data, isFetched }) {
                 aria-expanded="false"
               >
                 <div className="position-relative ml-3 user-circle-component"></div>
-                <span className="username"> Alejandro Oslovski </span>
+                <span className="username"> Matías Pineda </span>
                 <span
                   className="d-inline-block text-center position-relative"
                   data-bs-toggle="tooltip"
@@ -128,9 +128,9 @@ function Header({ data, isFetched }) {
                     />
                   </svg>
                   <div className="font-weight-bold text-no-wrap mt-2">
-                    Alejandro Oslovski
+                    Matías Pineda
                   </div>
-                  <div className="text-muted">@wilson</div>
+                  <div className="text-muted">@matu</div>
                   <div className="text-muted text-center mt-3">
                     <span className="badge badge-pill rounded-5 text-dark-emphasis badge-light border border-dark px-5 py-2">
                       Perfil Hospital

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../assets/styles/style.css";
 import Notificacion from "../components/UI/LandingNotificacion.jsx";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
@@ -28,7 +27,7 @@ export const Home = () => {
         </div>
         <div>
           <h4 className="font-weight-bold text-muted mb-0">Formulario 2828</h4>
-          <h6 className="text-info mb-0"> Sueldos</h6>
+          <h6 className="text-info mb-0"> Personal y Sueldos</h6>
         </div>
       </div>
 

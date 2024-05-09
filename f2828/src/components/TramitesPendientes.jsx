@@ -3,10 +3,8 @@ import DataTable from "react-data-table-component";
 import EmptyTable from "./UI/EmptyTable";
 import { usePagination } from "../hooks/usePagination";
 import { Link } from "react-router-dom";
-import "../assets/styles/detalle.css";
 import Spinner from "./UI/Spinner";
 import { MaskCuil } from "../utils/Mask";
-import "../components/styles/GetAgente.css";
 import { useAgentes } from "../hooks/useAgentes";
 
 //Componente que muestra los AGENTES
@@ -59,7 +57,7 @@ const TramitesPendientes = ({ ...props }) => {
       format: (row) => MaskCuil(row.cuil),
     },
     {
-      name: "Ver",
+      name: "Eliminar",
       cell: (row) => (
         <Link to={`/agentes/agente/${row.id}`} className="custom-link">
           <button className="detalle"> + Información</button>
@@ -88,13 +86,19 @@ const TramitesPendientes = ({ ...props }) => {
           <input
             type="text"
             className="form-control"
-            placeholder="Buscar por APELLIDO o CUIL"
+            placeholder="Buscar por Nro de Órden o Legajo"
             onChange={handleOnChange}
             value={search}
             autoComplete="off"
             disabled={!data}
           />
         </div>
+        <span>
+          Traer los datos con Data Table, agregarle la posibilidad de eliminar
+          registro, solicitudes que fueron devuelta por haberes quede marcada de
+          alguna forma y que diga el motivo; el PDF que descargue todo en una
+          sola pagina
+        </span>
         {!showSpinner ? (
           <DataTable
             columns={columns}
