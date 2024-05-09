@@ -5,9 +5,8 @@ import Layout from "../components/Layout/LayoutContainer";
 const CrearAgente = () => {
   return (
     <Layout
-      Subtitulo="Ingresá el DNI de la persona y se completarán automáticamente los
-    campos para crear el agente"
-      Titulo="Creación de Agente"
+      Subtitulo="Ingresá el DNI de la persona, el legajo o el número de órden para la carga de datos"
+      Titulo="Carga de Datos"
     >
       <PostAgentes />
       <br />
