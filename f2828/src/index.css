@@ -965,3 +965,21 @@ fieldset[disabled] .btn {
 .btn.btn-outline-info:hover {
   color: #fff;
 }
+
+
+.funcion {
+  width: 400px;
+}
+
+@media (max-width: 800px) {
+  .funcion {
+   width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .postCargo > div {
+    flex-direction: column;
+  }
+}
+

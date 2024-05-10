@@ -1,154 +1,169 @@
-import { useState } from "react";
-import Swal from "sweetalert2";
-import { useOperativo } from "../hooks/useOperativo";
-import { validateFecha } from "../utils/Validaciones";
-import InputField from "./UI/InputField";
-
-//Componente para crear el OPERATIVO
+import React, { useState } from "react";
+import InputField from "../components/UI/InputField";
 
 const PostCargo = () => {
-  const { mutate } = useOperativo().operativoMutation;
+  const [cargo, setCargo] = useState("");
+  const [fechaDesde, setFechaDesde] = useState("");
+  const [fechaHasta, setFechaHasta] = useState("");
+  const [cargo1, setCargo1] = useState("");
+  const [fechaDesde1, setFechaDesde1] = useState("");
+  const [fechaHasta1, setFechaHasta1] = useState("");
 
-  const [showError, setShowError] = useState({
-    referencia: false,
-    fecha: 0,
-  });
+  const [cargo2, setCargo2] = useState("");
+  const [fechaDesde2, setFechaDesde2] = useState("");
+  const [fechaHasta2, setFechaHasta2] = useState("");
 
-  const validateString = (inputName, value) => {
-    switch (inputName) {
-      case "referencia":
-        const regexReferencia = /^[0-9]+$/;
-        if (!regexReferencia.test(value)) {
-          setShowError({ ...showError, referencia: true });
-        } else {
-          setShowError({ ...showError, referencia: false });
-        }
-        break;
-    }
+  const handleCargoChange = (e) => {
+    setCargo(e.target.value);
   };
 
-  //---------------------------- CREACION OPERATIVO ---------------------------- //
-
-  const [operativo, setOperativo] = useState({
-    referencia: "",
-    fecha: "",
-    descripcion: "",
-    fechapago: "",
-  });
-
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-
-    if (operativo.referencia && operativo.fecha) {
-      if (showError.fecha) {
-        return;
-      }
-
-      const newOperativo = {
-        ...operativo,
-        fecha: operativo.fecha,
-      };
-
-      mutate(newOperativo);
-
-      setOperativo({
-        referencia: "",
-        fecha: "",
-        descripcion: "",
-      });
-      setShowError({ fecha: false, referencia: false });
-    } else {
-      Swal.fire({
-        position: "center",
-        icon: "info",
-        title: "Por favor, completa todos los campos",
-        showConfirmButton: true,
-      });
-    }
+  const handleFechaDesdeChange = (e) => {
+    setFechaDesde(e.target.value);
   };
+
+  const handleFechaHastaChange = (e) => {
+    setFechaHasta(e.target.value);
+  };
+
+  const handleCargoChange1 = (e) => {
+    setCargo1(e.target.value);
+  };
+
+  const handleFechaDesdeChange1 = (e) => {
+    setFechaDesde1(e.target.value);
+  };
+
+  const handleFechaHastaChange1 = (e) => {
+    setFechaHasta1(e.target.value);
+  };
+
+  const handleCargoChange2 = (e) => {
+    setCargo2(e.target.value);
+  };
+
+  const handleFechaDesdeChange2 = (e) => {
+    setFechaDesde2(e.target.value);
+  };
+
+  const handleFechaHastaChange2 = (e) => {
+    setFechaHasta2(e.target.value);
+  };
+
   return (
     <div>
-      <form onSubmit={handleOnSubmit}>
-        <div className="mb-2">
-          <InputField
-            required
-            label="Proceso de donación"
-            inputType="number"
-            inputKey="referencia"
-            value={operativo.referencia}
-            onChange={(e) => {
-              const newValue = e.target.value;
-              if (newValue >= 0) {
-                setOperativo({ ...operativo, referencia: e.target.value });
-                validateString(e.target.name, e.target.value);
-              }
-            }}
-          />
-          {showError.referencia && (
-            <div style={{ color: "red" }}>
-              El proceso de donación no puede tener letras
-            </div>
-          )}
-        </div>
-        <div className="mb-3">
-          <InputField
-            required
-            min="2022-01-01"
-            label="Fecha"
-            inputType="date"
-            inputKey="Fecha"
-            value={operativo.fecha}
-            onChange={(e) => {
-              setOperativo({ ...operativo, fecha: e.target.value });
-              setShowError({
-                ...showError,
-                fecha: validateFecha(e.target.value)
-                  ? 1
-                  : e.target.value < e.target.min
-                  ? 2
-                  : 0,
-              });
-            }}
-          />
-          {showError.fecha == 1 && (
-            <div style={{ color: "red" }}>
-              La fecha no puede ser posterior al dia de hoy
-            </div>
-          )}
-          {showError.fecha == 2 && (
-            <div style={{ color: "red" }}>
-              La fecha no puede ser anterior al año 2022
-            </div>
-          )}
-        </div>
-        <InputField
-          label="Descripción"
-          inputType="text"
-          inputKey="Descripcion"
-          value={operativo.descripcion}
-          onChange={(e) => {
-            setOperativo({ ...operativo, descripcion: e.target.value });
-            validateString(e.target.name, e.target.value);
-          }}
-        />
+      <div className="postCargo">
+        <span>Cargo de mayor jerarquía (Meses consecutivos) LEY:</span>
 
-        <div className="d-flex justify-content-end">
-          <div>
-            <button
-              type="submit"
-              className="btn btn-guardar btn-md"
-              disabled={
-                showError.referencia ||
-                showError.fecha !== 0 ||
-                !operativo.fecha ||
-                !operativo.referencia
-              }
-            >
-              Agregar Operativo
-            </button>
-          </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "1rem",
+          }}
+        >
+          <label>
+            Función:
+            <input
+              className="form-control funcion"
+              type="text"
+              value={cargo}
+              onChange={handleCargoChange}
+            />
+          </label>
+          <label>
+            Fecha Desde:
+            <input
+              className="form-control"
+              type="date"
+              value={fechaDesde}
+              onChange={handleFechaDesdeChange}
+            />
+          </label>
+          <label>
+            Fecha Hasta:
+            <input
+              className="form-control"
+              type="date"
+              value={fechaHasta}
+              onChange={handleFechaHastaChange}
+            />
+          </label>
         </div>
-      </form>
+      </div>
+      <div className="postCargo">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "1rem",
+          }}
+        >
+          <label>
+            Función:
+            <input
+              className="form-control funcion"
+              type="text"
+              value={cargo}
+              onChange={handleCargoChange1}
+            />
+          </label>
+          <label>
+            Fecha Desde:
+            <input
+              className="form-control"
+              type="date"
+              value={fechaDesde}
+              onChange={handleFechaDesdeChange1}
+            />
+          </label>
+          <label>
+            Fecha Hasta:
+            <input
+              className="form-control"
+              type="date"
+              value={fechaHasta}
+              onChange={handleFechaHastaChange1}
+            />
+          </label>
+        </div>
+      </div>
+      <div className="postCargo">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "1rem",
+          }}
+        >
+          <label>
+            Función:
+            <input
+              className="form-control funcion"
+              type="text"
+              value={cargo}
+              onChange={handleCargoChange2}
+            />
+          </label>
+          <label>
+            Fecha Desde:
+            <input
+              className="form-control"
+              type="date"
+              value={fechaDesde}
+              onChange={handleFechaDesdeChange2}
+            />
+          </label>
+          <label>
+            Fecha Hasta:
+            <input
+              className="form-control"
+              type="date"
+              value={fechaHasta}
+              onChange={handleFechaHastaChange2}
+            />
+          </label>
+        </div>
+      </div>
     </div>
   );
 };
