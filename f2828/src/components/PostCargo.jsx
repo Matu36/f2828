@@ -1,7 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../components/UI/InputField";
 
 const PostCargo = () => {
+  const [persona, setPersona] = useState(null);
+
+  useEffect(() => {
+    const personaGuardada = localStorage.getItem("Persona");
+
+    if (personaGuardada) {
+      setPersona(JSON.parse(personaGuardada));
+    }
+  }, []);
+
   const [cargo, setCargo] = useState("");
   const [fechaDesde, setFechaDesde] = useState("");
   const [fechaHasta, setFechaHasta] = useState("");
@@ -51,6 +61,15 @@ const PostCargo = () => {
 
   return (
     <div>
+      <div className="PerdosaDatosShow">
+        {persona ? (
+          <div>
+            <p>Apellido: {persona.apellido}</p>
+            <p>Nombre: {persona.nombre}</p>
+            <p>DNI: {persona.dni}</p>
+          </div>
+        ) : null}
+      </div>
       <div className="postCargo">
         <span>Cargo de mayor jerarquía (Meses consecutivos) LEY:</span>
 
