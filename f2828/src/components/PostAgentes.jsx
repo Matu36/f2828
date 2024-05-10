@@ -12,12 +12,10 @@ import { MaskCuil } from "../utils/Mask";
 const INITIALSTATE = {
   apellido: "",
   nombre: "",
-  cuil: "",
-  cbu: "",
-  tipoPago: "",
   personaid: 0,
   nroDocumento: "",
   legajo: 0,
+  fechaNacimiento: "",
 };
 
 const postAgente = () => {
@@ -53,13 +51,12 @@ const postAgente = () => {
         setShowForm(true);
         setAgente({
           ...agente,
-          apellido: personaData.apellido,
-          nombre: personaData.nombre,
-          cuil: personaData.cuil,
-          cbu: personaData.cbuBloque1 + personaData.cbuBloque2,
-          tipoPago: personaData.RefTipoPago == 5 ? "cb" : "ch",
+          apellido: personaData.Apellido,
+          nombre: personaData.Nombre,
+          cuil: personaData.NroDocumento,
+          fechaNacimiento: personaData.FechaNacimiento,
           personaid: personaData.id,
-          legajo: personaData.legajo,
+          legajo: personaData.Legajo,
         });
 
         if (typeof personaData[0] == "string") {
@@ -70,9 +67,7 @@ const postAgente = () => {
                 ...agente,
                 apellido: personaData[1].apellido,
                 nombre: personaData[1].nombre,
-                cuil: personaData[1].cuil,
-                cbu: personaData[1].cbuBloque1 + personaData[1].cbuBloque2,
-                tipoPago: personaData[1].tipoPago == 5 ? "cb" : "ch",
+                fechaNacimiento: personaData[1].FechaNacimiento,
                 personaid: personaData[1].id,
                 legajo: personaData[1].legajo,
               });
@@ -92,8 +87,7 @@ const postAgente = () => {
                 apellido: personaData[1].apellido,
                 nombre: personaData[1].nombre,
                 cuil: personaData[1].cuil,
-                cbu: personaData[1].cbuBloque1 + personaData[1].cbuBloque2,
-                tipoPago: personaData[1].tipoPago == 5 ? "cb" : "ch",
+                fechaNacimiento: personaData[1].FechaNacimiento,
                 personaid: personaData[1].id,
                 legajo: personaData[1].legajo,
               });
@@ -136,12 +130,11 @@ const postAgente = () => {
       const newAgente = {
         apellido: agente.apellido,
         nombre: agente.nombre,
-        cuil: agente.cuil,
-        cbu: agente.cbu,
-        tipoPago: agente.tipoPago,
+
         personaid: personaData.id,
         dni: agente.nroDocumento,
         legajo: agente.legajo,
+        fechaNacimiento: agente.fechaNacimiento,
       };
 
       await Swal.fire({
@@ -248,7 +241,7 @@ const postAgente = () => {
               </div>
             )}
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <div className="d-flex gap-3 mb-2">
               <label htmlFor="inputFechadePago" className="form-label">
                 LEGAJO:
@@ -391,7 +384,7 @@ const postAgente = () => {
                 * El campo DNI no puede estar vacío
               </div>
             )}
-          </div>
+          </div> */}
           {showForm && (
             <div className="row">
               <div className="col-md-6">
@@ -428,48 +421,20 @@ const postAgente = () => {
                 />
               </div>
               <div className="col-md-6">
-                {" "}
                 <InputField
-                  inputKey="CUIL"
-                  inputType="text"
-                  value={MaskCuil(agente.cuil)}
-                  label="CUIL"
+                  inputKey="FECHANACIMIENTO"
+                  inputType="date"
+                  value={
+                    agente.fechaNacimiento
+                      ? agente.fechaNacimiento.slice(0, 10)
+                      : ""
+                  }
+                  label="FECHA DE NACIMIENTO"
                   disabled
                   onChange={(e) =>
-                    setAgente({ ...agente, cuil: e.target.value })
+                    setAgente({ ...agente, fechaNacimiento: e.target.value })
                   }
                 />
-                <InputField
-                  inputKey="CBU"
-                  inputType="text"
-                  value={agente.cbu}
-                  label="CBU"
-                  disabled
-                  onChange={(e) =>
-                    setAgente({ ...agente, cbu: e.target.value })
-                  }
-                />
-                <div className="mb-3">
-                  <label htmlFor="inputTipoPago" className="form-label">
-                    Tipo de Pago:
-                  </label>
-                  <select
-                    id="inputTipoPago"
-                    aria-describedby="TipoPagoHelp"
-                    name="TipoPago"
-                    value={agente.tipoPago}
-                    placeholder="tipoPago"
-                    disabled
-                    onChange={(e) =>
-                      setAgente({ ...agente, tipoPago: e.target.value })
-                    }
-                    className="form-select form-select-md mb-3 form-control"
-                  >
-                    <option defaultValue="">Selecciona una opción</option>
-                    <option value="ch">Cheque</option>
-                    <option value="cb">Cuenta Bancaria</option>
-                  </select>
-                </div>
               </div>
 
               <div className="mb-3">
