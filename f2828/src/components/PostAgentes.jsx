@@ -5,7 +5,6 @@ import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import InputField from "../components/UI/InputField";
-import { MaskCuil } from "../utils/Mask";
 
 //Componente que busca la persona en el SQLServer y autocompleta los campos del formulario para la creación del agente
 
@@ -55,7 +54,7 @@ const postAgente = () => {
           nombre: personaData.Nombre,
           cuil: personaData.NroDocumento,
           fechaNacimiento: personaData.FechaNacimiento,
-          personaid: personaData.id,
+          personaid: personaData.IdPersona,
           legajo: personaData.Legajo,
         });
 
@@ -68,7 +67,7 @@ const postAgente = () => {
                 apellido: personaData[1].apellido,
                 nombre: personaData[1].nombre,
                 fechaNacimiento: personaData[1].FechaNacimiento,
-                personaid: personaData[1].id,
+                personaid: personaData[1].IdPersona,
                 legajo: personaData[1].legajo,
               });
               Swal.fire({
@@ -126,17 +125,20 @@ const postAgente = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
+    localStorage.removeItem("Persona");
+
     if (isFormValid && typeof personaData == "object" && agente) {
       const newAgente = {
         apellido: agente.apellido,
         nombre: agente.nombre,
-
-        personaid: personaData.id,
+        personaid: personaData.IdPersona,
         dni: agente.nroDocumento,
         legajo: agente.legajo,
         fechaNacimiento: agente.fechaNacimiento,
       };
 
+      console.log(newAgente);
+      localStorage.setItem("Persona", JSON.stringify(newAgente));
       await Swal.fire({
         position: "center",
         icon: "success",
@@ -150,8 +152,8 @@ const postAgente = () => {
         setAgente(INITIALSTATE);
         setClicked(false);
         setShowForm(false);
-        navigate("../ver-agentes");
       });
+      navigate("/servicios/jurisdicción");
     } else if (!agente.nroDocumento) {
       Swal.fire({
         position: "center",
@@ -461,7 +463,7 @@ const postAgente = () => {
                       type="submit"
                       className="btn btn-guardar btn btn-md"
                     >
-                      Cargar Agente
+                      Guardar y continuar
                     </button>
                   )}
                 </div>

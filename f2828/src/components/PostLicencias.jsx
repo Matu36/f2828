@@ -1,6 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function PostLicencias() {
+  const [persona, setPersona] = useState(null);
+
+  useEffect(() => {
+    const personaGuardada = localStorage.getItem("Persona");
+
+    if (personaGuardada) {
+      setPersona(JSON.parse(personaGuardada));
+    }
+  }, []);
+
   const [licenciaConMedioSueldo, setLicenciaConMedioSueldo] = useState({
     fechaDesde: "",
     fechaHasta: "",
@@ -45,6 +55,15 @@ export default function PostLicencias() {
 
   return (
     <div>
+      <div className="PerdosaDatosShow">
+        {persona ? (
+          <div>
+            <p>Apellido: {persona.apellido}</p>
+            <p>Nombre: {persona.nombre}</p>
+            <p>DNI: {persona.dni}</p>
+          </div>
+        ) : null}
+      </div>
       <div>
         <h5
           style={{

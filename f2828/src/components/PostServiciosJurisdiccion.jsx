@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useOperativo } from "../hooks/useOperativo";
 import { validateFecha } from "../utils/Validaciones";
@@ -8,6 +8,15 @@ import InputField from "./UI/InputField";
 
 const PostServiciosJurisdiccion = () => {
   const { mutate } = useOperativo().operativoMutation;
+  const [persona, setPersona] = useState(null);
+
+  useEffect(() => {
+    const personaGuardada = localStorage.getItem("Persona");
+
+    if (personaGuardada) {
+      setPersona(JSON.parse(personaGuardada));
+    }
+  }, []);
 
   const [showError, setShowError] = useState({
     referencia: false,
@@ -69,6 +78,15 @@ const PostServiciosJurisdiccion = () => {
   };
   return (
     <div>
+      <div className="PerdosaDatosShow">
+        {persona ? (
+          <div>
+            <p>Apellido: {persona.apellido}</p>
+            <p>Nombre: {persona.nombre}</p>
+            <p>DNI: {persona.dni}</p>
+          </div>
+        ) : null}
+      </div>
       <form onSubmit={handleOnSubmit}>
         <div className="mb-2">
           <InputField
@@ -107,8 +125,8 @@ const PostServiciosJurisdiccion = () => {
                 fechaEgreso: validateFecha(e.target.value)
                   ? 1
                   : e.target.value < e.target.min
-                  ? 2
-                  : 0,
+                    ? 2
+                    : 0,
               });
             }}
           />
@@ -137,8 +155,8 @@ const PostServiciosJurisdiccion = () => {
                 fechaIngreso: validateFecha(e.target.value)
                   ? 1
                   : e.target.value < e.target.min
-                  ? 2
-                  : 0,
+                    ? 2
+                    : 0,
               });
             }}
           />

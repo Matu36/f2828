@@ -34,7 +34,9 @@ body {
 }
 
 .shadow-ms {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
@@ -966,14 +968,13 @@ fieldset[disabled] .btn {
   color: #fff;
 }
 
-
 .funcion {
   width: 400px;
 }
 
 @media (max-width: 800px) {
   .funcion {
-   width: 100%;
+    width: 100%;
   }
 }
 
@@ -983,3 +984,23 @@ fieldset[disabled] .btn {
   }
 }
 
+.PerdosaDatosShow {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PerdosaDatosShow div {
+  text-align: center;
+}
+
+.PerdosaDatosShow p {
+  color: #6c757d;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
