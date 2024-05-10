@@ -7,6 +7,10 @@ import SideBar from "./SideBar";
 function Header({ data, isFetched }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleLogout = () => {
+    localStorage.removeItem("Persona");
+  };
+
   const honorariosPendientesCount = isFetched ? data : 0;
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -146,12 +150,15 @@ function Header({ data, isFetched }) {
                   Domingo Peron
                 </div>
                 <div className="dropdown-divider mb-2" />
-                <div className="dropdown-item text-center" type="button">
+                <div
+                  onClick={handleLogout}
+                  className="dropdown-item text-center"
+                  type="button"
+                >
                   <a
                     id="closeSession"
                     className="btn btn-danger close-session w-50"
-                    href="/cucaibabonif/trunk/public/index.php/logout"
-                    data-url="/cucaibabonif/trunk/public/index.php/logout"
+                    href="https://sistemas.ms.gba.gov.ar/intranet/intranet.php"
                   >
                     Salir
                   </a>
