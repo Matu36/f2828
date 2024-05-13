@@ -61,15 +61,16 @@ const PostCargo = () => {
 
   return (
     <div>
-      <div className="PerdosaDatosShow">
-        {persona ? (
+      {persona ? (
+        <div className="PerdosaDatosShow">
           <div>
             <p>Apellido: {persona.apellido}</p>
             <p>Nombre: {persona.nombre}</p>
             <p>DNI: {persona.dni}</p>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
+
       <div className="postCargo">
         <span>Cargo de mayor jerarquía (Meses consecutivos) LEY:</span>
 
