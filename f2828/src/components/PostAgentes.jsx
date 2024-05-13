@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import InputField from "../components/UI/InputField";
 
-//Componente que busca la persona en el SQLServer y autocompleta los campos del formulario para la creación del agente
+//Componente que busca la persona en la API de personal y autocompleta los campos del formulario para la creación del agente
 
 const INITIALSTATE = {
   apellido: "",
@@ -137,7 +137,6 @@ const postAgente = () => {
         fechaNacimiento: agente.fechaNacimiento,
       };
 
-      console.log(newAgente);
       localStorage.setItem("Persona", JSON.stringify(newAgente));
       await Swal.fire({
         position: "center",
