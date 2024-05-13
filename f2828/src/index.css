@@ -1011,12 +1011,31 @@ fieldset[disabled] .btn {
   margin-top: 2rem;
 }
 
+.añomesdia input {
+  max-width: 10%;
+}
+
 .fechadesdefechahasta {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin-bottom: 3rem;
+  align-items: center;
   margin-top: 2rem;
 }
 
 .fechadesdefechahasta label {
-  margin-left: 105px;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+.fechadesdefechahasta input {
+  max-width: 25%;
+  margin: 0 0.5rem;
+}
+
+.tituloInputJurisficcion {
+  background-color: #54cbdb;
+  padding: 0.5rem;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
 }

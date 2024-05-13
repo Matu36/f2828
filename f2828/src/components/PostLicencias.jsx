@@ -68,7 +68,7 @@ export default function PostLicencias() {
         <h5
           style={{
             textAlign: "center",
-            background: "#cceeff",
+            background: "#54cbdb",
             padding: "5px",
           }}
         >
@@ -147,7 +147,7 @@ export default function PostLicencias() {
         <h5
           style={{
             textAlign: "center",
-            background: "#cceeff",
+            background: "#54cbdb",
             padding: "5px",
           }}
         >
