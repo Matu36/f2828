@@ -9,6 +9,25 @@ import InputField from "./UI/InputField";
 const PostServiciosJurisdiccion = () => {
   const { mutate } = useOperativo().operativoMutation;
   const [persona, setPersona] = useState(null);
+  const [fechaDesde, setFechaDesde] = useState("");
+  const [fechaHasta, setFechaHasta] = useState("");
+
+  const calcularAniosMesesDias = () => {
+    const fechaInicio = new Date(fechaDesde);
+    const fechaFin = new Date(fechaHasta);
+
+    const diferenciaMilisegundos = fechaFin - fechaInicio;
+
+    const diferenciaDias = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
+
+    const anios = Math.floor(diferenciaDias / 365);
+
+    const mesesRestantes = Math.floor((diferenciaDias % 365) / 30);
+
+    const diasRestantes = Math.floor((diferenciaDias % 365) % 30);
+
+    return { anios, meses: mesesRestantes, dias: diasRestantes };
+  };
 
   useEffect(() => {
     const personaGuardada = localStorage.getItem("Persona");
@@ -36,7 +55,7 @@ const PostServiciosJurisdiccion = () => {
     }
   };
 
-  //---------------------------- CREACION OPERATIVO ---------------------------- //
+  //---------------------------- CREACION SERVICIOS JURISDICCIONAL ---------------------------- //
 
   const [operativo, setOperativo] = useState({
     referencia: "",
@@ -171,6 +190,30 @@ const PostServiciosJurisdiccion = () => {
         <span style={{ fontWeight: "bold" }}>
           2.1.1 - Servicios Prestados en la Jurisdicción
         </span>
+        <div className="fechadesdefechahasta">
+          <label htmlFor="fechaDesde">Fecha Desde:</label>
+          <input
+            type="date"
+            id="fechaDesde"
+            value={fechaDesde}
+            onChange={(e) => setFechaDesde(e.target.value)}
+          />
+          <label htmlFor="fechaHasta">Fecha Hasta:</label>
+          <input
+            type="date"
+            id="fechaHasta"
+            value={fechaHasta}
+            onChange={(e) => setFechaHasta(e.target.value)}
+          />
+        </div>
+        <div className="añomesdia">
+          <label>Año:</label>
+          <input type="text" value={calcularAniosMesesDias().anios} disabled />
+          <label>Mes:</label>
+          <input type="text" value={calcularAniosMesesDias().meses} disabled />
+          <label>Días:</label>
+          <input type="text" value={calcularAniosMesesDias().dias} disabled />
+        </div>
         <br />
 
         <div className="d-flex justify-content-end">
