@@ -12,19 +12,25 @@ const PostServiciosJurisdiccion = () => {
   const [fechaHasta, setFechaHasta] = useState("");
   const [fechaDesdeInsalubre, setFechaDesdeInsalubre] = useState("");
   const [fechaHastaInsalubre, setFechaHastaInsalubre] = useState("");
+  const [fechaDesdeProvAnteriores, setFechaDesdeProvAnteriores] = useState("");
+  const [fechaHastaProvAnteriores, setFechaHastaProvAnteriores] = useState("");
+  const [fechaDesdeSeguridad, setFechaDesdeSeguridad] = useState("");
+  const [fechaHastaSeguridad, setFechaHastaSeguridad] = useState("");
+  const [fechaDesdeDocentes, setFechaDesdeDocentes] = useState("");
+  const [fechaHastaDocentes, setFechaHastaDocentes] = useState("");
+  const [fechaDesdeObstetricia, setFechaDesdeObstetricia] = useState("");
+  const [fechaHastaObstetricia, setFechaHastaObstetricia] = useState("");
+  const [fechaDesdePrevisionales, setFechaDesdePrevisionales] = useState("");
+  const [fechaHastaPrevisionales, setFechaHastaPrevisionales] = useState("");
 
-  const calcularAniosMesesDias = () => {
+  const calcularAniosMesesDias = (fechaDesde, fechaHasta) => {
     const fechaInicio = new Date(fechaDesde);
     const fechaFin = new Date(fechaHasta);
 
     const diferenciaMilisegundos = fechaFin - fechaInicio;
-
     const diferenciaDias = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
-
     const anios = Math.floor(diferenciaDias / 365);
-
     const mesesRestantes = Math.floor((diferenciaDias % 365) / 30);
-
     const diasRestantes = Math.floor((diferenciaDias % 365) % 30);
 
     return { anios, meses: mesesRestantes, dias: diasRestantes };
@@ -49,6 +55,28 @@ const PostServiciosJurisdiccion = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = {
+      dependencia: servicio.dependencia,
+      fechaEgreso: servicio.fechaEgreso,
+      fechaIngreso: servicio.fechaIngreso,
+      fechaDesde: fechaDesde,
+      fechaHasta: fechaHasta,
+      fechaDesdeInsalubre: fechaDesdeInsalubre,
+      fechaHastaInsalubre: fechaHastaInsalubre,
+      fechaDesdeProvAnteriores: fechaDesdeProvAnteriores,
+      fechaHastaProvAnteriores: fechaHastaProvAnteriores,
+      fechaDesdeSeguridad: fechaDesdeSeguridad,
+      fechaHastaSeguridad: fechaHastaSeguridad,
+      fechaDesdeDocentes: fechaDesdeDocentes,
+      fechaHastaDocentes: fechaHastaDocentes,
+      fechaDesdeObstetricia: fechaDesdeObstetricia,
+      fechaHastaObstetricia: fechaHastaObstetricia,
+      fechaDesdePrevisionales: fechaDesdePrevisionales,
+      fechaHastaPrevisionales: fechaHastaPrevisionales,
+    };
+
+    console.log(formData);
+
     if (servicio.dependencia && servicio.fechaEgreso && servicio.fechaIngreso) {
       const newServicio = {
         ...servicio,
@@ -70,6 +98,7 @@ const PostServiciosJurisdiccion = () => {
       });
     }
   };
+
   return (
     <div>
       <div>
@@ -95,7 +124,6 @@ const PostServiciosJurisdiccion = () => {
               const newValue = e.target.value;
               if (newValue >= 0) {
                 setServicio({ ...servicio, dependencia: e.target.value });
-                validateString(e.target.name, e.target.value);
               }
             }}
           />
@@ -155,21 +183,21 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={calcularAniosMesesDias(fechaDesde, fechaHasta).anios}
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={calcularAniosMesesDias(fechaDesde, fechaHasta).meses}
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={calcularAniosMesesDias(fechaDesde, fechaHasta).dias}
             disabled
           />
         </div>
@@ -203,21 +231,30 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={
+              calcularAniosMesesDias(fechaDesdeInsalubre, fechaHastaInsalubre)
+                .anios
+            }
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={
+              calcularAniosMesesDias(fechaDesdeInsalubre, fechaHastaInsalubre)
+                .meses
+            }
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={
+              calcularAniosMesesDias(fechaDesdeInsalubre, fechaHastaInsalubre)
+                .dias
+            }
             disabled
           />
         </div>
@@ -233,16 +270,16 @@ const PostServiciosJurisdiccion = () => {
             className="form-control"
             type="date"
             id="fechaDesde"
-            value={fechaDesdeInsalubre}
-            onChange={(e) => setFechaDesdeInsalubre(e.target.value)}
+            value={fechaDesdeProvAnteriores}
+            onChange={(e) => setFechaDesdeProvAnteriores(e.target.value)}
           />
           <label htmlFor="fechaHasta">Fecha Hasta:</label>
           <input
             className="form-control"
             type="date"
             id="fechaHasta"
-            value={fechaHastaInsalubre}
-            onChange={(e) => setFechaHastaInsalubre(e.target.value)}
+            value={fechaHastaProvAnteriores}
+            onChange={(e) => setFechaHastaProvAnteriores(e.target.value)}
           />
         </div>
         <div className="añomesdia">
@@ -250,21 +287,36 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={
+              calcularAniosMesesDias(
+                fechaDesdeProvAnteriores,
+                fechaHastaProvAnteriores
+              ).anios
+            }
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={
+              calcularAniosMesesDias(
+                fechaDesdeProvAnteriores,
+                fechaHastaProvAnteriores
+              ).meses
+            }
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={
+              calcularAniosMesesDias(
+                fechaDesdeProvAnteriores,
+                fechaHastaProvAnteriores
+              ).dias
+            }
             disabled
           />
         </div>
@@ -280,16 +332,16 @@ const PostServiciosJurisdiccion = () => {
             className="form-control"
             type="date"
             id="fechaDesde"
-            value={fechaDesdeInsalubre}
-            onChange={(e) => setFechaDesdeInsalubre(e.target.value)}
+            value={fechaDesdeSeguridad}
+            onChange={(e) => setFechaDesdeSeguridad(e.target.value)}
           />
           <label htmlFor="fechaHasta">Fecha Hasta:</label>
           <input
             className="form-control"
             type="date"
             id="fechaHasta"
-            value={fechaHastaInsalubre}
-            onChange={(e) => setFechaHastaInsalubre(e.target.value)}
+            value={fechaHastaSeguridad}
+            onChange={(e) => setFechaHastaSeguridad(e.target.value)}
           />
         </div>
         <div className="añomesdia">
@@ -297,21 +349,30 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={
+              calcularAniosMesesDias(fechaDesdeSeguridad, fechaHastaSeguridad)
+                .anios
+            }
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={
+              calcularAniosMesesDias(fechaDesdeSeguridad, fechaHastaSeguridad)
+                .meses
+            }
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={
+              calcularAniosMesesDias(fechaDesdeSeguridad, fechaHastaSeguridad)
+                .dias
+            }
             disabled
           />
         </div>
@@ -327,16 +388,16 @@ const PostServiciosJurisdiccion = () => {
             className="form-control"
             type="date"
             id="fechaDesde"
-            value={fechaDesdeInsalubre}
-            onChange={(e) => setFechaDesdeInsalubre(e.target.value)}
+            value={fechaDesdeDocentes}
+            onChange={(e) => setFechaDesdeDocentes(e.target.value)}
           />
           <label htmlFor="fechaHasta">Fecha Hasta:</label>
           <input
             className="form-control"
             type="date"
             id="fechaHasta"
-            value={fechaHastaInsalubre}
-            onChange={(e) => setFechaHastaInsalubre(e.target.value)}
+            value={fechaHastaDocentes}
+            onChange={(e) => setFechaHastaDocentes(e.target.value)}
           />
         </div>
         <div className="añomesdia">
@@ -344,21 +405,30 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={
+              calcularAniosMesesDias(fechaDesdeDocentes, fechaHastaDocentes)
+                .anios
+            }
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={
+              calcularAniosMesesDias(fechaDesdeDocentes, fechaHastaDocentes)
+                .meses
+            }
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={
+              calcularAniosMesesDias(fechaDesdeDocentes, fechaHastaDocentes)
+                .dias
+            }
             disabled
           />
         </div>
@@ -376,16 +446,16 @@ const PostServiciosJurisdiccion = () => {
             className="form-control"
             type="date"
             id="fechaDesde"
-            value={fechaDesdeInsalubre}
-            onChange={(e) => setFechaDesdeInsalubre(e.target.value)}
+            value={fechaDesdeObstetricia}
+            onChange={(e) => setFechaDesdeObstetricia(e.target.value)}
           />
           <label htmlFor="fechaHasta">Fecha Hasta:</label>
           <input
             className="form-control"
             type="date"
             id="fechaHasta"
-            value={fechaHastaInsalubre}
-            onChange={(e) => setFechaHastaInsalubre(e.target.value)}
+            value={fechaHastaObstetricia}
+            onChange={(e) => setFechaHastaObstetricia(e.target.value)}
           />
         </div>
         <div className="añomesdia">
@@ -393,21 +463,36 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={
+              calcularAniosMesesDias(
+                fechaHastaObstetricia,
+                fechaHastaObstetricia
+              ).anios
+            }
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={
+              calcularAniosMesesDias(
+                fechaHastaObstetricia,
+                fechaHastaObstetricia
+              ).meses
+            }
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={
+              calcularAniosMesesDias(
+                fechaHastaObstetricia,
+                fechaHastaObstetricia
+              ).dias
+            }
             disabled
           />
         </div>
@@ -425,16 +510,16 @@ const PostServiciosJurisdiccion = () => {
             className="form-control"
             type="date"
             id="fechaDesde"
-            value={fechaDesdeInsalubre}
-            onChange={(e) => setFechaDesdeInsalubre(e.target.value)}
+            value={fechaDesdePrevisionales}
+            onChange={(e) => setFechaDesdePrevisionales(e.target.value)}
           />
           <label htmlFor="fechaHasta">Fecha Hasta:</label>
           <input
             className="form-control"
             type="date"
             id="fechaHasta"
-            value={fechaHastaInsalubre}
-            onChange={(e) => setFechaHastaInsalubre(e.target.value)}
+            value={fechaHastaPrevisionales}
+            onChange={(e) => setFechaHastaPrevisionales(e.target.value)}
           />
         </div>
         <div className="añomesdia">
@@ -442,21 +527,36 @@ const PostServiciosJurisdiccion = () => {
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().anios}
+            value={
+              calcularAniosMesesDias(
+                fechaDesdePrevisionales,
+                fechaHastaPrevisionales
+              ).anios
+            }
             disabled
           />
           <label>Meses:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().meses}
+            value={
+              calcularAniosMesesDias(
+                fechaDesdePrevisionales,
+                fechaHastaPrevisionales
+              ).meses
+            }
             disabled
           />
           <label>Días:</label>
           <input
             className="form-control"
             type="number"
-            value={calcularAniosMesesDias().dias}
+            value={
+              calcularAniosMesesDias(
+                fechaDesdePrevisionales,
+                fechaHastaPrevisionales
+              ).dias
+            }
             disabled
           />
         </div>
