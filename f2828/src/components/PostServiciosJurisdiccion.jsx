@@ -465,7 +465,7 @@ const PostServiciosJurisdiccion = () => {
             type="number"
             value={
               calcularAniosMesesDias(
-                fechaHastaObstetricia,
+                fechaDesdeObstetricia,
                 fechaHastaObstetricia
               ).anios
             }
@@ -477,7 +477,7 @@ const PostServiciosJurisdiccion = () => {
             type="number"
             value={
               calcularAniosMesesDias(
-                fechaHastaObstetricia,
+                fechaDesdeObstetricia,
                 fechaHastaObstetricia
               ).meses
             }
@@ -489,7 +489,7 @@ const PostServiciosJurisdiccion = () => {
             type="number"
             value={
               calcularAniosMesesDias(
-                fechaHastaObstetricia,
+                fechaDesdeObstetricia,
                 fechaHastaObstetricia
               ).dias
             }
