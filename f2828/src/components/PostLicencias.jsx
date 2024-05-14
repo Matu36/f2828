@@ -55,12 +55,14 @@ export default function PostLicencias() {
 
   return (
     <div>
-      <div className="PerdosaDatosShow">
+      <div>
         {persona ? (
-          <div>
-            <p>Apellido: {persona.apellido}</p>
-            <p>Nombre: {persona.nombre}</p>
-            <p>DNI: {persona.dni}</p>
+          <div className="PerdosaDatosShow">
+            <div>
+              <p>Apellido: {persona.apellido}</p>
+              <p>Nombre: {persona.nombre}</p>
+              <p>DNI: {persona.dni}</p>
+            </div>
           </div>
         ) : null}
       </div>

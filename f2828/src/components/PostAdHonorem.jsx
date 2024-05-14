@@ -33,15 +33,15 @@ const PostAdHonorem = () => {
 
   return (
     <div>
-      <div className="PerdosaDatosShow">
-        {persona ? (
+      {persona ? (
+        <div className="PerdosaDatosShow">
           <div>
             <p>Apellido: {persona.apellido}</p>
             <p>Nombre: {persona.nombre}</p>
             <p>DNI: {persona.dni}</p>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="fechaDesde" className="form-label">
