@@ -8,8 +8,6 @@ import { useCredencial } from "../../hooks/UseCredenciales";
 function Header({ data, isFetched }) {
   const { data: credencialData, isLoading } = useCredencial().credencialesQuery;
 
-  console.log(credencialData);
-
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -76,7 +74,10 @@ function Header({ data, isFetched }) {
                 aria-expanded="false"
               >
                 <div className="position-relative ml-3 user-circle-component"></div>
-                <span className="username"> Matías Pineda </span>
+                <span className="username">
+                  {" "}
+                  {credencialData?.nombreCompleto}{" "}
+                </span>
                 <span
                   className="d-inline-block text-center position-relative"
                   data-bs-toggle="tooltip"
@@ -139,10 +140,10 @@ function Header({ data, isFetched }) {
                   <div className="font-weight-bold text-no-wrap mt-2">
                     Matías Pineda
                   </div>
-                  <div className="text-muted">@matu</div>
+                  {/* <div className="text-muted">@matu</div> */}
                   <div className="text-muted text-center mt-3">
                     <span className="badge badge-pill rounded-5 text-dark-emphasis badge-light border border-dark px-5 py-2">
-                      Perfil Hospital
+                      {credencialData?.descripcionPerfil}
                     </span>
                   </div>
                 </div>
@@ -151,8 +152,7 @@ function Header({ data, isFetched }) {
                   className="dropdown-item text-secondary text-center py-3"
                   type="button"
                 >
-                  Centro De Alta Complejidad Cardiovascular Presidente Juan
-                  Domingo Peron
+                  {credencialData?.descEstablecimiento}
                 </div>
                 <div className="dropdown-divider mb-2" />
                 <div
