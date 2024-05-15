@@ -3,8 +3,13 @@ import { FaBars } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import "../styles/header.css";
 import SideBar from "./SideBar";
+import { useCredencial } from "../../hooks/UseCredenciales";
 
 function Header({ data, isFetched }) {
+  const { data: credencialData, isLoading } = useCredencial().credencialesQuery;
+
+  console.log(credencialData);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {

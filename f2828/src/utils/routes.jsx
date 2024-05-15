@@ -10,6 +10,8 @@ import Suplentes from "../Pages/Suplentes";
 import ErrorPage from "../Pages/ErrorPage";
 import Licencias from "../Pages/Licencias";
 import Cargos from "../Pages/Cargos";
+import Descuentos from "../Pages/Descuentos";
+import Adicionales from "../Pages/Adicionales";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +61,15 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/adicionales",
+        element: <Adicionales />,
+      },
+      {
+        path: "/descuentos",
+        element: <Descuentos />,
+      },
+
       {
         path: "/licencias",
         children: [

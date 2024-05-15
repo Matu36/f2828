@@ -75,8 +75,6 @@ const PostServiciosJurisdiccion = () => {
       fechaHastaPrevisionales: fechaHastaPrevisionales,
     };
 
-    console.log(formData);
-
     if (servicio.dependencia && servicio.fechaEgreso && servicio.fechaIngreso) {
       const newServicio = {
         ...servicio,

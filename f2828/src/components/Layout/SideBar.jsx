@@ -8,10 +8,14 @@ import {
 } from "react-icons/fa";
 import { TbLicense } from "react-icons/tb";
 import { GrUserWorker } from "react-icons/gr";
+import { MdDiscount } from "react-icons/md";
+import { VscDiffAdded } from "react-icons/vsc";
 
 import "../styles/sidebar.css";
 
 function SideBar({ isOpen, setIsOpen }) {
+  const Perfil = 1;
+
   return (
     <div
       className={`sidebar-nav navbar-collapse offcanvas-collapse ${
@@ -117,6 +121,26 @@ function SideBar({ isOpen, setIsOpen }) {
             </li>
           </ul>
         </li>
+
+        {Perfil === 1 ? (
+          <>
+            <li>
+              <Link to="/adicionales" onClick={() => setIsOpen(false)}>
+                <VscDiffAdded
+                  className="sidebarIcons text-muted"
+                  size="1.50em"
+                />{" "}
+                Adicionales
+              </Link>
+            </li>
+            <li>
+              <Link to="/descuentos" onClick={() => setIsOpen(false)}>
+                <MdDiscount className="sidebarIcons text-muted" size="1.50em" />{" "}
+                Descuentos
+              </Link>
+            </li>
+          </>
+        ) : null}
         <ul className="metismenu side-menu" id="side-menu">
           <li>
             <a

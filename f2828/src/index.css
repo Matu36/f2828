@@ -1039,3 +1039,22 @@ fieldset[disabled] .btn {
   margin-bottom: 3rem;
   margin-top: 2rem;
 }
+
+.descuentosContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+.descuentosContainer > div {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 880px) {
+  .descuentosContainer {
+    flex-direction: column;
+
+    align-items: center;
+    margin-left: 0 auto;
+    margin-top: 1rem;
+  }
+}
