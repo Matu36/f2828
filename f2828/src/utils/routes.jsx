@@ -12,6 +12,7 @@ import Licencias from "../Pages/Licencias";
 import Cargos from "../Pages/Cargos";
 import Descuentos from "../Pages/Descuentos";
 import Adicionales from "../Pages/Adicionales";
+import DetalleTramite from "../Pages/DetalleTramite";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
           {
             path: "/personas/ver-TramitesPendientes",
             element: <Pendientes />,
+          },
+          {
+            path: "/personas/persona/:id",
+            element: <DetalleTramite />,
           },
           {
             path: "/personas/carga-datos",

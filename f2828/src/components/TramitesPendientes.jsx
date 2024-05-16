@@ -109,7 +109,10 @@ const TramitesPendientes = ({ ...props }) => {
       name: "Acciones",
       cell: (row) => (
         <Dropdown handleClick={() => setClicked({ isClicked: true })}>
-          <Link className="dropdown-item dropdown-item-custom">
+          <Link
+            to={`/personas/persona/${row.id}`}
+            className="dropdown-item dropdown-item-custom"
+          >
             <FaSearch size="0.85em" />
             <span style={{ marginLeft: "5px" }}>Ver Trámite</span>
           </Link>
