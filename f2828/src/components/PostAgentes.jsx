@@ -18,8 +18,6 @@ const INITIALSTATE = {
 };
 
 const postAgente = () => {
-  const Perfil = "Admin";
-
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -314,7 +312,7 @@ const postAgente = () => {
                 />
               </div>
 
-              <div className="d-flex justify-content-around">
+              <div className="d-flex justify-content-end">
                 <div>
                   {statusForm == "create" && (
                     <button
@@ -325,16 +323,6 @@ const postAgente = () => {
                     </button>
                   )}
                 </div>
-                {Perfil === "Admin" ? (
-                  <div>
-                    <button
-                      type="submit"
-                      className="btn btn-guardar btn btn-md"
-                    >
-                      Finalizar Trámite
-                    </button>
-                  </div>
-                ) : null}
               </div>
             </div>
           )}

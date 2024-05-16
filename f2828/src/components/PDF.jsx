@@ -68,6 +68,7 @@ export default function ({ clicked }) {
         </Document>
       }
       fileName={`Trámite.pdf`}
+      style={{ textDecoration: "none", color: "inherit" }}
     >
       {({ loading }) => (loading ? "Cargando documento..." : " Imprimir ")}
     </PDFDownloadLink>
