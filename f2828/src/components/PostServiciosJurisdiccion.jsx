@@ -202,8 +202,7 @@ const PostServiciosJurisdiccion = () => {
 
         <div className="tituloInputJurisficcion">
           <span style={{ fontWeight: "bold" }}>
-            2.1.2-Servicios reconocidos insalubres conforme Acta generada por el
-            Honorable Directorio del I.P.S. de la Pcia de Bs.As.
+            2.1.2-Servicios reconocidos insalubres
           </span>
         </div>
         <div className="fechadesdefechahasta">

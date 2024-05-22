@@ -4,10 +4,7 @@ import Layout from "../components/Layout/LayoutContainer";
 
 const CargaDatos = () => {
   return (
-    <Layout
-      Subtitulo="Ingresá el DNI de la persona, el legajo o el apellido para la carga de datos"
-      Titulo="Carga de Datos"
-    >
+    <Layout Subtitulo="Ingresá el DNI de la persona" Titulo="Buscar Personal">
       <PostAgentes />
       <br />
     </Layout>
