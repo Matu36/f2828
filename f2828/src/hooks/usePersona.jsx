@@ -3,7 +3,7 @@ import { PersonasAPI } from "../api/PersonasAPI";
 
 // Función para obtener información de una persona por DNI
 const getPersonaByDNI = async (dni) => {
-  const { data } = await PersonasAPI.get(`/${dni}`);
+  const { data } = await PersonasAPI.get(`/basico/${dni}`);
 
   return data;
 };

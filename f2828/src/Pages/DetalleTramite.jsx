@@ -6,7 +6,7 @@ const DetalleTramite = () => {
   return (
     <Layout
       Titulo="Detalle del Trámite"
-      Subtitulo="Verificá para finalizar el Trámite"
+      Subtitulo="Verificá la información para finalizar el Trámite"
     >
       <GetDetalleTramite />
       <br />

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaHospitalSymbol,
@@ -15,6 +16,20 @@ import "../styles/sidebar.css";
 
 function SideBar({ isOpen, setIsOpen }) {
   const Perfil = 1;
+  const [isPersonaInLocalStorage, setIsPersonaInLocalStorage] = useState(false);
+
+  useEffect(() => {
+    const persona = localStorage.getItem("Persona");
+    setIsPersonaInLocalStorage(persona !== null);
+  }, []);
+
+  const handleDisabledLinkClick = (e) => {
+    if (!isPersonaInLocalStorage) {
+      e.preventDefault();
+    } else {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <div
@@ -61,7 +76,7 @@ function SideBar({ isOpen, setIsOpen }) {
           <ul className="collapse sub-menu" id="collapseAgentes">
             <li>
               <Link to="/personas/carga-datos" onClick={() => setIsOpen(false)}>
-                Cargar Datos
+                Buscar Personal
               </Link>
             </li>
             <li>
@@ -74,11 +89,12 @@ function SideBar({ isOpen, setIsOpen }) {
             </li>
           </ul>
         </li>
+
         <li>
           <a
             aria-controls="collapseExample"
             aria-expanded="false"
-            className="nav-link dropdown-toggle"
+            className={`nav-link dropdown-toggle ${!isPersonaInLocalStorage ? "disabled-link" : ""}`}
             data-bs-toggle="collapse"
             href="#collapseOperativos"
             role="button"
@@ -90,7 +106,8 @@ function SideBar({ isOpen, setIsOpen }) {
             <li>
               <Link
                 to="/servicios/jurisdicción"
-                onClick={() => setIsOpen(false)}
+                className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+                onClick={handleDisabledLinkClick}
               >
                 Cargar Servicios
               </Link>
@@ -101,7 +118,7 @@ function SideBar({ isOpen, setIsOpen }) {
           <a
             aria-controls="collapseExample"
             aria-expanded="false"
-            className="nav-link dropdown-toggle"
+            className={`nav-link dropdown-toggle ${!isPersonaInLocalStorage ? "disabled-link" : ""}`}
             data-bs-toggle="collapse"
             href="#collapseHonorarios"
             role="button"
@@ -109,12 +126,12 @@ function SideBar({ isOpen, setIsOpen }) {
             <GrUserWorker className="sidebarIcons text-muted" size="1.50em" />{" "}
             Cargos
           </a>
-
           <ul className="collapse sub-menu" id="collapseHonorarios">
             <li>
               <Link
                 to="/cargos/agregar-cargos"
-                onClick={() => setIsOpen(false)}
+                className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+                onClick={handleDisabledLinkClick}
               >
                 Agregar Cargos
               </Link>
@@ -122,10 +139,14 @@ function SideBar({ isOpen, setIsOpen }) {
           </ul>
         </li>
 
-        {Perfil === 1 ? (
+        {Perfil === 1 && (
           <>
             <li>
-              <Link to="/adicionales" onClick={() => setIsOpen(false)}>
+              <Link
+                to="/adicionales"
+                className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+                onClick={handleDisabledLinkClick}
+              >
                 <VscDiffAdded
                   className="sidebarIcons text-muted"
                   size="1.50em"
@@ -134,40 +155,46 @@ function SideBar({ isOpen, setIsOpen }) {
               </Link>
             </li>
             <li>
-              <Link to="/descuentos" onClick={() => setIsOpen(false)}>
+              <Link
+                to="/descuentos"
+                className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+                onClick={handleDisabledLinkClick}
+              >
                 <MdDiscount className="sidebarIcons text-muted" size="1.50em" />{" "}
                 Descuentos
               </Link>
             </li>
           </>
-        ) : null}
-        <ul className="metismenu side-menu" id="side-menu">
-          <li>
-            <a
-              aria-controls="collapseModulos"
-              aria-expanded="false"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="collapse"
-              href="#collapseModulos"
-              role="button"
-            >
-              <TbLicense className="sidebarIcons text-muted" size="1.50em" />{" "}
-              Licencias
-            </a>
-            <ul className="collapse sub-menu" id="collapseModulos">
-              <li>
-                <Link to="/licencias" onClick={() => setIsOpen(false)}>
-                  Agregar Licencias
-                </Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        )}
+        <li>
+          <a
+            aria-controls="collapseModulos"
+            aria-expanded="false"
+            className={`nav-link dropdown-toggle ${!isPersonaInLocalStorage ? "disabled-link" : ""}`}
+            data-bs-toggle="collapse"
+            href="#collapseModulos"
+            role="button"
+          >
+            <TbLicense className="sidebarIcons text-muted" size="1.50em" />{" "}
+            Licencias
+          </a>
+          <ul className="collapse sub-menu" id="collapseModulos">
+            <li>
+              <Link
+                to="/licencias"
+                className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+                onClick={handleDisabledLinkClick}
+              >
+                Agregar Licencias
+              </Link>
+            </li>
+          </ul>
+        </li>
         <li>
           <a
             aria-controls="collapseExample"
             aria-expanded="false"
-            className="nav-link dropdown-toggle"
+            className={`nav-link dropdown-toggle ${!isPersonaInLocalStorage ? "disabled-link" : ""}`}
             data-bs-toggle="collapse"
             href="#collapseOrdenes"
             role="button"
@@ -175,17 +202,24 @@ function SideBar({ isOpen, setIsOpen }) {
             <FaGift className="sidebarIcons text-muted" size="1.50em" />{" "}
             Servicios Ad-Honórem
           </a>
-
           <ul className="collapse sub-menu" id="collapseOrdenes">
             <li>
-              <Link to="/ad-honorem/cargar" onClick={() => setIsOpen(false)}>
+              <Link
+                to="/ad-honorem/cargar"
+                className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+                onClick={handleDisabledLinkClick}
+              >
                 Cargar Servicios
               </Link>
             </li>
           </ul>
         </li>
         <li>
-          <Link to="/suplentes" onClick={() => setIsOpen(false)}>
+          <Link
+            to="/suplentes"
+            className={!isPersonaInLocalStorage ? "disabled-link" : ""}
+            onClick={handleDisabledLinkClick}
+          >
             <FaExchangeAlt className="sidebarIcons text-muted" size="1.50em" />{" "}
             Servicios Suplentes
           </Link>
